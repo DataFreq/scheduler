@@ -96,7 +96,7 @@ storiesOf("InterviewerListItem", module)
       id={interviewer.id}
       name={interviewer.name}
       avatar={interviewer.avatar}
-      setInterviewer={action("setInterviewer")}
+      setInterviewer={event => action("setInterviewer")(interviewer.id)}
     />
   ));
 
@@ -125,3 +125,10 @@ storiesOf("InterviewerList", module)
       setInterviewer={action("setInterviewer")}
     />
   ));
+
+storiesOf("Appointment", module)
+  .addParameters({
+    backgrounds: [{ name: "white", values: "#fff", default: true }]
+  })
+  .add("Appointment", () => <Appointment />)
+  .add("Appointment with Time", () => <Appointment time="12pm" />)
