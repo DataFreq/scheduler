@@ -1,59 +1,25 @@
-const getAppointmentsForDay = (state, day) => {
-  const dayArr = [];
-  const appArr = [];
-  for (const dayState of state.days) {
-    if (dayState.appointments.length === 0) {
-      return dayArr;
-    }
-    if (dayState.name === day) {
-      dayArr.push(...dayState.appointments);
-    }
-  }
-
-  for (const appointment in state.appointments) {
-    for (const day of dayArr) {
-      if (day === parseInt(appointment)) {
-        appArr.push(state.appointments[appointment]);
-      }
-    }
-  }
-  return appArr;
-};
-
 const getInterview = (state, interview) => {
-  const obj = {};
-  if (interview) {
-    for (const i in state.interviewers) {
-      if (state.interviewers[i].id === parseInt(interview.interviewer)) {
-        obj.student = interview.student;
-        obj.interviewer = state.interviewers[i];
-      }
-    }
-  } else {
-    return null;
-  }
+  return interview ? { ...interview, interviewer: state.interviewers[interview.interviewer] } : null;
 }
 
-const getInterviewersForDay = (state, day) => {
-  const dayArr = [];
-  const interviewerArr = [];
-  for (const dayState of state.days) {
-    if (dayState.interviewers.length === 0) {
-      return dayArr;
-    }
-    if (dayState.name === day) {
-      dayArr.push(...dayState.interviewers);
-    }
+const getAppointmentsForDay = (state, day) => {
+  const arr = [];
+  const filteredDay = state.days.filter(ele => ele.name === day);
+  const filteredApps = filteredDay[0] ? filteredDay[0].appointments : arr;
+  for (const a of filteredApps) {
+    arr.push(state.appointments[a])
   }
+  return arr; 
+};
 
-  for (const interviewer in state.interviewers) {
-    for (const day of dayArr) {
-      if (day === parseInt(interviewer)) {
-        interviewerArr.push(state.interviewers[interviewer]);
-      }
-    }
+const getInterviewersForDay = (state, day) => {
+  const arr = [];
+  const filteredDay = state.days.filter(ele => ele.name === day);
+  const filteredInterviewers = filteredDay[0] ? filteredDay[0].interviewers : arr;
+  for (const a of filteredInterviewers) {
+    arr.push(state.interviewers[a])
   }
-  return interviewerArr;
+  return arr; 
 };
 
 export { getAppointmentsForDay, getInterview, getInterviewersForDay };
