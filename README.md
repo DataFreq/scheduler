@@ -1,23 +1,8 @@
 # Interview Scheduler
 
-## Setup
+## Getting Started
 
-Install dependencies with `npm install`.
+- Install dependencies with `npm install`.
+- Run `npm start` in root directory of scheduler
 
-## Running Webpack Development Server
-
-```sh
-npm start
-```
-
-## Running Jest Test Framework
-
-```sh
-npm test
-```
-
-## Running Storybook Visual Testbed
-
-```sh
-npm run storybook
-```
+!["Interview-Scheduler"](docs/appointment-form.png)
