@@ -5,7 +5,7 @@ Interview Scheduler is a single plage application that allows users to book, edi
 
 - Clone the Repo.
 - Install dependencies with `npm install`.
-- Clone [scheduler-api](https://github.com/lighthouse-labs/scheduler-api)
+- Clone [scheduler-api](https://github.com/lighthouse-labs/scheduler-api) and run `npm install` in scheduler-api
 - Run `npm start` in the root directory of scheduler-api
 - Run `npm start` in root directory of scheduler
 
