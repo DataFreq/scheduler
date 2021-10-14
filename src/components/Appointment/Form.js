@@ -3,7 +3,7 @@ import Button from "../Button";
 import InterviewerList from "../InterviewerList";
 
 export default function Form(props) {
-  const { interviewers, onSave, onCancel } = props;
+  const { interviewers, onCancel } = props;
   const [name, setName] = useState(props.name || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
   const [err, setErr] = useState("");
@@ -16,10 +16,6 @@ export default function Form(props) {
   function cancel() {
     reset();
     onCancel();
-  }
-
-  function save() {
-    onSave(name, interviewer);
   }
 
   function onChange(event) {
