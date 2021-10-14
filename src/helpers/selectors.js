@@ -9,7 +9,7 @@ const getAppointmentsForDay = (state, day) => {
   for (const app of filteredApps) {
     arr.push(state.appointments[app])
   }
-  return arr; 
+  return arr;
 };
 
 const getInterviewersForDay = (state, day) => {
@@ -19,7 +19,7 @@ const getInterviewersForDay = (state, day) => {
   for (const interview of filteredInterviewers) {
     arr.push(state.interviewers[interview])
   }
-  return arr; 
+  return arr;
 };
 
 export { getAppointmentsForDay, getInterview, getInterviewersForDay };

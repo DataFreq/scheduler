@@ -24,28 +24,28 @@ export default function Appointment(props) {
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
-
   const onAdd = () => transition(CREATE);
-  const onEdit = () => transition(EDIT);
+
+  // DELETE AN INTERVIEW
   const onConfirm = () => {
     transition(DELETING, true);
     props
-      .cancelInterview(props.id)
-      .then(() => transition(EMPTY))
-      .catch((err) => transition(ERROR_DELETE, true));
+    .cancelInterview(props.id)
+    .then(() => transition(EMPTY))
+    .catch(() => transition(ERROR_DELETE, true));
   };
+
+  // CREATE AN INTERVIEW
   const save = (name, interviewer) => {
     const interview = {
       student: name,
-      interviewer,
+      interviewer
     };
-
     transition(SAVING);
-
     props
       .bookInterview(props.id, interview)
       .then(() => transition(SHOW))
-      .catch((err) => transition(ERROR_SAVE, true));
+      .catch(() => transition(ERROR_SAVE, true));
   };
 
   return (
@@ -56,8 +56,8 @@ export default function Appointment(props) {
         <Show
           student={props.interview.student}
           interviewer={props.interview.interviewer}
-          onDelete={onConfirm}
-          onEdit={onEdit}
+          onDelete={() => transition(CONFIRM)}
+          onEdit={() => transition(EDIT)}
         />
       )}
       {mode === CREATE && (
