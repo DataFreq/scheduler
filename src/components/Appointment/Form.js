@@ -3,13 +3,14 @@ import Button from "../Button";
 import InterviewerList from "../InterviewerList";
 
 export default function Form(props) {
-  const { interviewers, onCancel } = props;
+  const { interviewers, onSave, onCancel } = props;
   const [name, setName] = useState(props.name || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
   const [err, setErr] = useState("");
 
   function reset() {
     setName("");
+    setErr("");
     setInterviewer(null);
   };
 
@@ -28,7 +29,7 @@ export default function Form(props) {
       return;
     }
     setErr("");
-    props.onSave(name, interviewer);
+    onSave(name, interviewer);
   }
 
   return (
